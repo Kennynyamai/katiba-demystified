@@ -1,0 +1,769 @@
+{
+    "legalTerms": [
+      {
+        "word": "Affidavit",
+        "definition": "A written statement made under oath, used as evidence in court."
+      },
+      {
+        "word": "Appropriation",
+        "definition": "The act of setting aside money for a specific use by the government."
+      },
+      {
+        "word": "Bicameral",
+        "definition": "A legislative system with two separate chambers or houses."
+      },
+      {
+        "word": "Caveat",
+        "definition": "A warning or caution about a specific action or situation."
+      },
+      {
+        "word": "Chose in Action",
+        "definition": "A right to claim a debt or benefit through legal action."
+      },
+      {
+        "word": "Commissioner of Oaths",
+        "definition": "An official who witnesses the signing of legal documents and oaths."
+      },
+      {
+        "word": "Consolidated Fund",
+        "definition": "The main government account where all public revenues are kept."
+      },
+      {
+        "word": "Decree",
+        "definition": "An official order or decision issued by a legal authority."
+      },
+      {
+        "word": "Equity",
+        "definition": "Fairness and justice in the way people are treated, especially in legal matters."
+      },
+      {
+        "word": "Ex parte",
+        "definition": "A legal proceeding where only one side is present."
+      },
+      {
+        "word": "Fiduciary Duty",
+        "definition": "A responsibility to act in someone else's best interest."
+      },
+      {
+        "word": "Gazette",
+        "definition": "An official government publication that announces laws and legal notices."
+      },
+      {
+        "word": "Habeas Corpus",
+        "definition": "A legal right that protects against unlawful detention."
+      },
+      {
+        "word": "Immunity",
+        "definition": "Protection from being sued or prosecuted."
+      },
+      {
+        "word": "Injunction",
+        "definition": "A court order that prevents someone from doing a specific action."
+      },
+      {
+        "word": "Interlocutory",
+        "definition": "A temporary order made by a court while a case is still being decided."
+      },
+      {
+        "word": "Judicature",
+        "definition": "The judicial system, including courts and judges, that interprets the law."
+      },
+      {
+        "word": "Jurisdiction",
+        "definition": "The authority of a court to hear and decide cases."
+      },
+      {
+        "word": "Locus Standi",
+        "definition": "The right of a person to bring a lawsuit or appear in court."
+      },
+      {
+        "word": "Mandamus",
+        "definition": "A court order requiring a government official to perform a duty."
+      },
+      {
+        "word": "Marginalized",
+        "definition": "Groups that are pushed to the edge of society and have less power or opportunities."
+      },
+      {
+        "word": "Ombudsman",
+        "definition": "An official who investigates complaints against the government or public institutions."
+      },
+      {
+        "word": "Petition",
+        "definition": "A formal request to a court asking for a specific legal action."
+      },
+      {
+        "word": "Preamble",
+        "definition": "An introductory statement in a document that outlines its purpose."
+      },
+      {
+        "word": "Pro bono",
+        "definition": "Legal work done voluntarily and without charge."
+      },
+      {
+        "word": "Promissory Estoppel",
+        "definition": "A legal principle that prevents someone from backing out of a promise."
+      },
+      {
+        "word": "Quorum",
+        "definition": "The minimum number of members required to be present for a meeting to be valid."
+      },
+      {
+        "word": "Recusal",
+        "definition": "When a judge or official withdraws from a case due to a conflict of interest."
+      },
+      {
+        "word": "Referendum",
+        "definition": "A direct vote in which an entire electorate is invited to vote on a particular proposal."
+      },
+      {
+        "word": "Statutory",
+        "definition": "Relating to laws made by a legislative body."
+      },
+      {
+        "word": "Sub judice",
+        "definition": "A matter that is under judicial consideration and should not be discussed publicly."
+      },
+      {
+        "word": "Subpoena",
+        "definition": "A legal document that requires a person to appear in court or provide evidence."
+      },
+      {
+        "word": "Summons",
+        "definition": "An official notice to appear in court."
+      },
+      {
+        "word": "Ultra vires",
+        "definition": "Actions taken beyond the legal power or authority of an entity."
+      },
+      {
+        "word": "Vested Interest",
+        "definition": "A personal stake or advantage in a situation."
+      },
+      {
+        "word": "Writ",
+        "definition": "A formal written order issued by a court."
+      },
+      {
+        "word": "Sovereignty",
+        "definition": "The supreme power or authority of a state to govern itself."
+      },
+      {
+        "word": "Supremacy",
+        "definition": "The state of being the highest authority or power."
+      },
+      {
+        "word": "Devolution",
+        "definition": "The transfer of power from a central government to regional or local governments."
+      },
+      {
+        "word": "Legislation",
+        "definition": "Laws that are made by a legislative body."
+      },
+      {
+        "word": "Bill of Rights",
+        "definition": "A list of fundamental rights and freedoms guaranteed to citizens."
+      },
+      {
+        "word": "Inalienable",
+        "definition": "Rights that cannot be taken away or given up."
+      },
+      {
+        "word": "Ratified",
+        "definition": "Formally approved or confirmed by a vote."
+      },
+      {
+        "word": "Treason",
+        "definition": "The crime of betraying one's country."
+      },
+      {
+        "word": "Redress",
+        "definition": "Compensation or remedy for a wrong or grievance."
+      },
+      {
+        "word": "Probity",
+        "definition": "Integrity and honesty in conduct."
+      },
+      {
+        "word": "Statute",
+        "definition": "A written law passed by a legislative body."
+      },
+      {
+        "word": "Promulgate",
+        "definition": "To officially announce or make a law known."
+      },
+      {
+        "word": "Amortization",
+        "definition": "The gradual repayment of a debt over time."
+      },
+      {
+        "word": "Legalese",
+        "definition": "The formal and technical language used in legal documents."
+      },
+      {
+        "word": "Annulment",
+        "definition": "A legal declaration that a marriage or contract is invalid."
+      },
+      {
+        "word": "Franchise",
+        "definition": "The right to vote in public elections."
+      },
+      {
+        "word": "Moratorium",
+        "definition": "A temporary halt or suspension of an activity."
+      },
+      {
+        "word": "Prorogation",
+        "definition": "The ending of a session of a legislative assembly without dissolving it."
+      },
+      {
+        "word": "Interested Party",
+        "definition": "A person or group with a stake in the outcome of a legal matter."
+      },
+      {
+        "word": "Public Office",
+        "definition": "A position of authority or service in government."
+      },
+      {
+        "word": "Registrar",
+        "definition": "An official who keeps a record of important documents."
+      },
+      {
+        "word": "Respondent",
+        "definition": "The person or entity that answers a petition or legal complaint."
+      },
+      {
+        "word": "Petitioner",
+        "definition": "The person who makes a formal request to a court."
+      },
+      {
+        "word": "Affidavit of Service",
+        "definition": "A document proving that legal papers were delivered to a person."
+      },
+      {
+        "word": "Notice of Motion",
+        "definition": "A formal application to a court for a specific order."
+      },
+      {
+        "word": "Joinder",
+        "definition": "The act of bringing additional parties into a lawsuit."
+      },
+      {
+        "word": "Cross-Petition",
+        "definition": "A response that includes new claims made against the original petitioner."
+      },
+      {
+        "word": "Quasi-Judicial Function",
+        "definition": "Functions that involve the authority to make decisions similar to those of a court."
+      },
+      {
+        "word": "Contingencies Fund",
+        "definition": "Money set aside for unexpected expenses."
+      },
+      {
+        "word": "Natural Justice",
+        "definition": "The principle of fairness in legal proceedings."
+      },
+      {
+        "word": "Effective Date",
+        "definition": "The date when a law or provision comes into effect."
+      },
+      {
+        "word": "Electoral Boundaries",
+        "definition": "The defined geographical areas from which voters elect representatives."
+      },
+      {
+        "word": "Exclusive Economic Zone",
+        "definition": "An area of sea where a country has special rights over exploration and use of marine resources."
+      },
+      {
+        "word": "Exercise of Presidential Powers",
+        "definition": "The actions and responsibilities carried out by the President."
+      },
+      {
+        "word": "Friend of the Court (Amicus Curiae)",
+        "definition": "A person or organization that offers information to a court to assist in its decision."
+      },
+      {
+        "word": "Certificate of Urgency",
+        "definition": "A document that requests a quick court hearing due to the time-sensitive nature of a case."
+      },
+      {
+        "word": "Command of the Defence Forces",
+        "definition": "The authority to lead and manage the military."
+      },
+      {
+        "word": "Commission of Inquiry",
+        "definition": "A formal investigation conducted to examine a specific issue."
+      },
+      {
+        "word": "Competent to Perform Functions",
+        "definition": "Having the necessary skills and authority to carry out duties."
+      },
+      {
+        "word": "Commemorative Award",
+        "definition": "An honor given to recognize achievements or contributions."
+      },
+      {
+        "word": "Consequential Legislation",
+        "definition": "Laws enacted to implement or support a primary law."
+      },
+      {
+        "word": "Consolidation of Petitions",
+        "definition": "Combining multiple legal petitions into one for efficiency."
+      },
+      {
+        "word": "Deputy Prosecution Counsel",
+        "definition": "A lawyer who assists in prosecuting criminal cases."
+      },
+      {
+        "word": "Discontinuance of Proceedings",
+        "definition": "The act of stopping legal action before it is completed."
+      },
+      {
+        "word": "Enactment of Legislation",
+        "definition": "The process of making a proposed law official."
+      },
+      {
+        "word": "Equitable Distribution",
+        "definition": "Fair allocation of resources or responsibilities."
+      },
+      {
+        "word": "Guarantee",
+        "definition": "A promise or assurance, often related to repayment or performance."
+      },
+      {
+        "word": "Human Rights Commission",
+        "definition": "An organization that promotes and protects human rights."
+      },
+      {
+        "word": "Independent Electoral and Boundaries Commission (IEBC)",
+        "definition": "The body responsible for managing elections and boundaries in Kenya."
+      },
+      {
+        "word": "Joinder of Parties",
+        "definition": "The process of adding parties to a legal case."
+      },
+      {
+        "word": "Judicial Authority",
+        "definition": "The power vested in courts to interpret and apply the law."
+      },
+      {
+        "word": "Judicial Service Commission",
+        "definition": "A body that oversees the appointment and management of judges."
+      },
+      {
+        "word": "Legal Notice",
+        "definition": "An official announcement regarding a legal matter."
+      },
+      {
+        "word": "Legislative Authority",
+        "definition": "The power to make laws."
+      },
+      {
+        "word": "Linda Nchi Campaign Medal",
+        "definition": "An award given to recognize participation in a specific national defense campaign."
+      },
+      {
+        "word": "Misjoinder or Non-Joinder of Parties",
+        "definition": "Errors related to the inclusion or exclusion of parties in legal proceedings."
+      },
+      {
+        "word": "National Intelligence Service",
+        "definition": "The agency responsible for gathering and analyzing national security information."
+      },
+      {
+        "word": "Nomadic Pastoralists",
+        "definition": "People who move frequently with their livestock to find pastures."
+      },
+      {
+        "word": "Pleadings",
+        "definition": "The formal documents that outline the claims and defenses in a legal case."
+      },
+      {
+        "word": "Presidential Immunity",
+        "definition": "Protection from legal action for the President while in office."
+      },
+      {
+        "word": "Principal Secretary",
+        "definition": "A senior government official responsible for specific departments."
+      },
+      {
+        "word": "Procedural Technicalities",
+        "definition": "Specific rules or details that must be followed in legal processes."
+      },
+      {
+        "word": "Prosecution Counsel",
+        "definition": "A lawyer representing the state in a criminal case."
+      },
+      {
+        "word": "Protection from Legal Proceedings",
+        "definition": "Safeguards that prevent legal action against a person or entity."
+      },
+      {
+        "word": "Public Officer",
+        "definition": "A person who holds a position of authority in government service."
+      },
+      {
+        "word": "Public Participation",
+        "definition": "Involvement of citizens in government decision-making processes."
+      },
+      {
+        "word": "Quasi-Judicial Bodies",
+        "definition": "Organizations that have some powers similar to those of a court."
+      },
+      {
+        "word": "Ratification of Laws",
+        "definition": "The formal approval of laws by the governing body."
+      },
+      {
+        "word": "Reconciliation Mechanisms",
+        "definition": "Processes established to resolve disputes or conflicts."
+      },
+      {
+        "word": "Register of Voters",
+        "definition": "A list of eligible voters in an election."
+      },
+      {
+        "word": "Registrar of the Court",
+        "definition": "An official responsible for managing court records and procedures."
+      },
+      {
+        "word": "Removal from Office",
+        "definition": "The act of dismissing someone from their official position."
+      },
+      {
+        "word": "Replying Affidavit",
+        "definition": "A written response to an affidavit made by another party in a case."
+      },
+      {
+        "word": "Requisition of Documents",
+        "definition": "The formal request for documents needed in a legal proceeding."
+      },
+      {
+        "word": "Sovereignty of the People",
+        "definition": "The principle that the authority of the government is derived from the will of the people."
+      },
+      {
+        "word": "Speaker of the County Assembly",
+        "definition": "The elected leader of a county's legislative body."
+      },
+      {
+        "word": "Special Public Prosecutor",
+        "definition": "A lawyer appointed to handle specific public prosecution cases."
+      },
+      {
+        "word": "Standing Orders",
+        "definition": "The rules that govern the procedures of a legislative body."
+      },
+      {
+        "word": "Subordinate Courts",
+        "definition": "Courts that have limited authority and are lower than superior courts."
+      },
+      {
+        "word": "Substantive Law",
+        "definition": "The body of law that governs rights and obligations."
+      },
+      {
+        "word": "Summons to Witness",
+        "definition": "An official order requiring a person to appear and testify in court."
+      },
+      {
+        "word": "Superior Court",
+        "definition": "A higher court with broader jurisdiction and authority."
+      },
+      {
+        "word": "Suspension of Judge",
+        "definition": "The temporary removal of a judge from their duties."
+      },
+      {
+        "word": "Traditional Dispute Resolution Mechanisms",
+        "definition": "Methods used to resolve conflicts based on cultural practices."
+      },
+      {
+        "word": "Tribunal for Inquiry",
+        "definition": "A body established to investigate specific issues or complaints."
+      },
+      {
+        "word": "Ultra Vires Acts",
+        "definition": "Actions taken beyond the authority granted by law."
+      },
+      {
+        "word": "Unregistered Community Land",
+        "definition": "Land held by a community that is not officially registered."
+      },
+      {
+        "word": "Urban Areas and Cities",
+        "definition": "Designated places that are developed and populated with infrastructure."
+      },
+      {
+        "word": "Vacant County Offices",
+        "definition": "Positions in county government that are unfilled."
+      },
+      {
+        "word": "Vesting of Property",
+        "definition": "The process of formally assigning ownership of property."
+      },
+      {
+        "word": "Vice-Chairperson",
+        "definition": "The second-in-command in an organization or committee."
+      },
+      {
+        "word": "Writ of Certiorari",
+        "definition": "A court order directing a lower court to send up its record for review."
+      },
+      {
+        "word": "Writ of Habeas Corpus",
+        "definition": "A legal order requiring a person to be brought before a court."
+      },
+      {
+        "word": "Youth Representation",
+        "definition": "The inclusion of young people in decision-making processes or leadership roles."
+      },
+      {
+        "word": "Impeachment",
+        "definition": "A process to remove a government official from office due to misconduct."
+      },
+      {
+        "word": "Contingent Right",
+        "definition": "A right that depends on certain conditions being met."
+      },
+      {
+        "word": "Direct Pecuniary Interest",
+        "definition": "A financial stake or benefit directly linked to a legal matter."
+      },
+      {
+        "word": "Constitutional Implementation Oversight Committee",
+        "definition": "A body that monitors how laws are applied."
+      },
+      {
+        "word": "Population Quota",
+        "definition": "The number of representatives or resources allocated based on population size."
+      },
+      {
+        "word": "Public Debt",
+        "definition": "Money that a government owes to creditors."
+      },
+      {
+        "word": "Proportional Representation",
+        "definition": "An electoral system where parties gain seats based on the number of votes received."
+      },
+      {
+        "word": "County Executive Committee",
+        "definition": "The group of officials in charge of running a county government."
+      },
+      {
+        "word": "Budget Estimates",
+        "definition": "Projections of expected government revenue and expenditure for the coming year."
+      },
+      {
+        "word": "Judicial Review",
+        "definition": "The power of courts to assess whether a law or action is constitutional."
+      },
+      {
+        "word": "County Assembly",
+        "definition": "The legislative body of a county government."
+      },
+      {
+        "word": "Community Land",
+        "definition": "Land held by a community rather than individuals."
+      },
+      {
+        "word": "Private Land",
+        "definition": "Land owned by individuals or organizations, not the government."
+      },
+      {
+        "word": "Vacancy in Parliament",
+        "definition": "An open seat in the legislature due to resignation or other reasons."
+      },
+      {
+        "word": "Controller of Budget",
+        "definition": "An official who oversees government spending and budget management."
+      },
+      {
+        "word": "Auditor-General",
+        "definition": "The official responsible for examining and verifying government financial records."
+      },
+      {
+        "word": "Marginalized Areas",
+        "definition": "Regions that have been historically disadvantaged in terms of resources and opportunities."
+      },
+      {
+        "word": "Public Finance Management",
+        "definition": "The processes and systems governing how public funds are used."
+      },
+      {
+        "word": "Teachers Service Commission",
+        "definition": "The body responsible for the recruitment and management of teachers."
+      },
+      {
+        "word": "Kenya Defence Forces",
+        "definition": "The military organization responsible for defending the country."
+      },
+      {
+        "word": "National Intelligence Service",
+        "definition": "The agency that gathers information related to national security."
+      },
+      {
+        "word": "National Police Service",
+        "definition": "The police force responsible for maintaining law and order."
+      },
+      {
+        "word": "Procurement Procedures",
+        "definition": "The rules governing the purchasing of goods and services by the government."
+      },
+      {
+        "word": "By-election",
+        "definition": "An election held to fill a vacancy that arises between general elections."
+      },
+      {
+        "word": "Fiscal Responsibility",
+        "definition": "The obligation of the government to manage its finances wisely."
+      },
+      {
+        "word": "Salaries and Remuneration Commission",
+        "definition": "The body that sets salaries for public officers."
+      },
+      {
+        "word": "Central Bank of Kenya",
+        "definition": "The institution responsible for managing the country's currency and monetary policy."
+      },
+      {
+        "word": "National Security Council",
+        "definition": "A group that advises the government on matters of national security."
+      },
+      {
+        "word": "National Treasury",
+        "definition": "The government department responsible for managing public finances."
+      },
+      {
+        "word": "Revenue Allocation",
+        "definition": "The distribution of government funds to various departments or levels of government."
+      },
+      {
+        "word": "Financial Control",
+        "definition": "The processes in place to manage and monitor government spending."
+      },
+      {
+        "word": "Independent Office",
+        "definition": "An organization that operates separately from government control."
+      },
+      {
+        "word": "Ethical Standards",
+        "definition": "Guidelines for appropriate behavior and practices."
+      },
+      {
+        "word": "Urban Planning",
+        "definition": "The process of designing and managing the development of urban areas."
+      },
+      {
+        "word": "Public Safety",
+        "definition": "The welfare and protection of the general public, especially regarding law enforcement."
+      },
+      {
+        "word": "Political Parties Act",
+        "definition": "The law governing the registration and functioning of political parties."
+      },
+      {
+        "word": "Right of Recall",
+        "definition": "The ability of voters to remove an elected official from office before their term ends."
+      },
+      {
+        "word": "Party List System",
+        "definition": "An electoral system in which parties gain seats based on the total votes they receive."
+      },
+      {
+        "word": "Principles of National Security",
+        "definition": "The fundamental ideas guiding a country's security policy."
+      },
+      {
+        "word": "State Organ",
+        "definition": "An entity established by the Constitution or law to perform a specific function."
+      },
+      {
+        "word": "Fiscal Reporting",
+        "definition": "The process of documenting and reporting financial activities and status."
+      },
+      {
+        "word": "Territorial Sea",
+        "definition": "The area of sea that extends from a country's coast, where the country has sovereignty."
+      },
+      {
+        "word": "Intellectual Property",
+        "definition": "Creations of the mind, such as inventions, designs, and artistic works, protected by law."
+      },
+      {
+        "word": "Electoral Code of Conduct",
+        "definition": "Rules that govern the behavior of parties and candidates during elections."
+      },
+      {
+        "word": "Audit Reports",
+        "definition": "Documents that provide an independent assessment of financial records."
+      },
+      {
+        "word": "Public Procurement",
+        "definition": "The process by which government acquires goods and services."
+      },
+      {
+        "word": "Ethnic Diversity",
+        "definition": "The presence of multiple ethnic groups within a population."
+      },
+      {
+        "word": "Pluralism",
+        "definition": "A society that recognizes and values diversity in culture, ideas, and beliefs."
+      },
+      {
+        "word": "Recall Mechanism",
+        "definition": "The process through which voters can remove an elected official from office."
+      },
+      {
+        "word": "Adjudication",
+        "definition": "The legal process of resolving a dispute by a judge or court."
+      },
+      {
+        "word": "Public Accountability",
+        "definition": "The responsibility of government officials to report and be answerable for their actions."
+      },
+      {
+        "word": "Citizen's Petition",
+        "definition": "A formal request submitted by citizens to the government or court for action or change."
+      },
+      {
+        "word": "Population Census",
+        "definition": "An official count of the population, often including details like age and gender."
+      },
+      {
+        "word": "Electoral Threshold",
+        "definition": "The minimum percentage of votes required for a party to gain representation."
+      },
+      {
+        "word": "Conflict of Interest",
+        "definition": "A situation where someone's personal interests might compromise their judgment or actions."
+      },
+      {
+        "word": "Political Neutrality",
+        "definition": "The principle of not favoring any political party or group."
+      },
+      {
+        "word": "Judicial Independence",
+        "definition": "The concept that the judiciary should operate free of influence from the other branches of government."
+      },
+      {
+        "word": "Subordination of Laws",
+        "definition": "The principle that lower laws must comply with higher laws or constitutional provisions."
+      },
+      {
+        "word": "Social Justice",
+        "definition": "The fair distribution of resources, opportunities, and privileges within a society."
+      },
+      {
+        "word": "Public Utility",
+        "definition": "Services provided to the public, such as water, electricity, and transportation."
+      },
+      {
+        "word": "Loan Servicing",
+        "definition": "The process of managing the repayment of borrowed funds."
+      }
+    ]
+  }
+  

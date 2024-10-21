@@ -1,0 +1,22 @@
+{
+  "name": "katiba-demystified",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss -i ./public/assets/input.css -o ./public/assets/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "express": "^4.21.1",
+    "flowbite": "^2.5.2",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.13.0",
+    "tailwindcss": "^3.4.13"
+  }
+}
