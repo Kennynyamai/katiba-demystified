@@ -3,7 +3,7 @@ const db = require('./database');
 
 const openAIHeaders = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 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'
+    'Authorization': ''
 }
 
 async function createEmbedding(textToEmbed) {
@@ -15,8 +15,8 @@ async function createEmbedding(textToEmbed) {
             "model": "text-embedding-3-small"
         }),
     });
-    
-    if(response.ok){
+
+    if (response.ok) {
         const data = await response.json();
         return data.data[0].embedding;
     } else {
