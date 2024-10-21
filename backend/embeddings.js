@@ -3,7 +3,8 @@ const db = require('./database');
 
 const openAIHeaders = {
     'Content-Type': 'application/json',
-    'Authorization': ''
+    'Authorization': process.env.OPENAI_API_KEY
+
 }
 
 async function createEmbedding(textToEmbed) {

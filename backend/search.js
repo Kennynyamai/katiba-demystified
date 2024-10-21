@@ -3,7 +3,8 @@ const db = require('./database'); // Assuming you have a database module for Pos
 
 const openAIHeaders = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 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'
+    'Authorization': process.env.OPENAI_API_KEY
+
     // Replace with your actual OpenAI API key
 }
 
