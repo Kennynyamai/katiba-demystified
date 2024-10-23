@@ -5,7 +5,8 @@ const csv = require('csv-parser');
 const { resolve } = require('path');
 const { rejects } = require('assert');
 const db = require('./database')
-const {getRelevantTexts} = require('./search')
+const {getRelevantTexts} = require('./search');
+const authRoutes = require('./auth');
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+authRoutes(app);
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
@@ -120,6 +122,52 @@ app.post('/relevant-texts', async (req, res) => {
         res.status(500).send('Server Error: Unable to retrieve relevant texts.');
     }
 });
+
+
+// Endpoint to get content by chapter
+// Endpoint to get content by chapter
+app.get('/data/chapter/:chapter', async (req, res) => {
+    const client = await db.pool.connect(); // Connect to the database
+    const chapter = req.params.chapter; // Get chapter from URL parameters
+    console.log(`Received request for chapter: ${chapter}`); // Log chapter request
+
+    try {
+        await client.query("BEGIN"); // Begin transaction
+
+        // Query the database for the specified chapter, ordered by part
+        const result = await client.query(
+            'SELECT chapter, part, title, sub_title, text FROM public.constitution_content WHERE chapter = $1 ORDER BY part ASC',
+            [chapter]
+        );
+
+        console.log(`Query result: ${JSON.stringify(result.rows)}`); // Log the query result
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: `No content found for chapter ${chapter}.`
+            });
+        }
+
+        await client.query("COMMIT"); // Commit transaction
+
+        res.json({
+            success: true,
+            data: result.rows // Send the chapter contents as a JSON response
+        });
+    } catch (error) {
+        await client.query("ROLLBACK"); // Rollback transaction on error
+        console.error(error);
+        res.status(500).send('Server Error: Unable to retrieve chapter contents.');
+    } finally {
+        client.release(); // Release the database client
+    }
+});
+
+
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

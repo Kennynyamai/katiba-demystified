@@ -1,10 +1,10 @@
 const db = require('./database'); // Assuming you have a database module for PostgreSQL connection
 // Ensure node-fetch is installed
+require('dotenv').config();
 
 const openAIHeaders = {
     'Content-Type': 'application/json',
-    'Authorization': process.env.OPENAI_API_KEY
-
+    'Authorization': `Bearer ${process.env.OPEN_AI_KEY}`
     // Replace with your actual OpenAI API key
 }
 

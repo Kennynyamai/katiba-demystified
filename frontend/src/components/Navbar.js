@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation for current route detection
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Check if the current path is /auth to hide the buttons
   const isAuthPage = location.pathname === '/auth';
+
+  // Handle logout by clearing token and redirecting to login page
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token from localStorage
+    navigate('/auth'); // Redirect to login page
+  };
 
   return (
     <header className="bg-gray-800 p-4 flex justify-between items-center fixed top-0 left-0 w-full z-10">
@@ -15,14 +21,16 @@ const Navbar = () => {
       {!isAuthPage && ( // Conditionally render the nav buttons based on the current route
         <nav className="flex space-x-4">
           {/* Link the Amendments button to the /amendments route */}
-          <Link to="/amendments">
+          <Link to="/searchbychapter">
             <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">
-              Amendments
+              Search by Chapter
             </button>
           </Link>
           <Link to="/auth">
-            <button className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-black">
-              Login
+            <button 
+             onClick={handleLogout}
+             className="bg-transparent border border-white px-4 py-2 rounded hover:bg-white hover:text-black">
+              Logout
             </button>
           </Link>
         </nav>

@@ -1,10 +1,10 @@
 const db = require('./database');
+require('dotenv').config();
 
 
 const openAIHeaders = {
     'Content-Type': 'application/json',
-    'Authorization': process.env.OPENAI_API_KEY
-
+    'Authorization': `Bearer ${process.env.OPEN_AI_KEY}`
 }
 
 async function createEmbedding(textToEmbed) {
@@ -16,8 +16,8 @@ async function createEmbedding(textToEmbed) {
             "model": "text-embedding-3-small"
         }),
     });
-
-    if (response.ok) {
+    
+    if(response.ok){
         const data = await response.json();
         return data.data[0].embedding;
     } else {
