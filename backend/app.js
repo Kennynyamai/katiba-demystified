@@ -37,7 +37,7 @@ const readCSV = () => {
     });
 };
 
-// Function to read CSV and insert data into PostgreSQL
+
 // Function to read CSV and insert data into PostgreSQL
 const readCSVAndInsertToDB = () => {
     return new Promise((resolve, reject) => {
@@ -124,7 +124,7 @@ app.post('/relevant-texts', async (req, res) => {
 });
 
 
-// Endpoint to get content by chapter
+
 // Endpoint to get content by chapter
 app.get('/data/chapter/:chapter', async (req, res) => {
     const client = await db.pool.connect(); // Connect to the database
