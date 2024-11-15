@@ -140,7 +140,7 @@ const UserAuthPage = ({ onLoginSuccess }) => {
           ) : (
             <div>
               <h2 className="text-xl font-medium uppercase text-purple-500 tracking-widest mb-8">Sign Up</h2>
-              <form className="space-y-4 min-h-[280px]" onSubmit={handleSubmit}>
+              <form className="space-y-4 min-h-[300px]" onSubmit={handleSubmit}>
                 <div>
                   <input
                     type="text"
