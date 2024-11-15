@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  // We'll use axios to make HTTP requests to the backend
+import { useNavigate } from 'react-router-dom';
 
-const UserAuthPage = ({ onLoginSuccess }) => {  // Accept `onLoginSuccess` as a prop
+const UserAuthPage = ({ onLoginSuccess }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -10,26 +10,36 @@ const UserAuthPage = ({ onLoginSuccess }) => {  // Accept `onLoginSuccess` as a 
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');  // For success message
+  const [successMessage, setSuccessMessage] = useState('');
 
   const navigate = useNavigate();
-  const toggleForms = () => {
-    setIsSignUp(!isSignUp);
+  const handleSignUp = () => {
+    setIsSignUp(true);
     setErrorMessage('');
-    setSuccessMessage('');  // Reset success message when switching forms
+    setSuccessMessage('');
+    setFormData({
+      fullName: '',
+      email: '',
+      password: ''
+    });
+    
   };
 
-  // Handle form data change
+  const handleLogin = () => {
+    setIsSignUp(false);
+    setErrorMessage('');
+    setSuccessMessage('');
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit handler for login or sign-up
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const url = isSignUp ? 'http://localhost:3001/register' : 'http://localhost:3001/login';
     
+    const url = isSignUp ? 'http://localhost:3001/register' : 'http://localhost:3001/login';
+
     try {
       const response = await axios.post(url, {
         full_name: formData.fullName,
@@ -37,12 +47,15 @@ const UserAuthPage = ({ onLoginSuccess }) => {  // Accept `onLoginSuccess` as a 
         password: formData.password,
       });
 
-      // If login is successful, store the token and notify the parent component
       if (!isSignUp) {
+        // Login
         localStorage.setItem('token', response.data.accessToken);
+        setSuccessMessage("Login successful!");
         onLoginSuccess(); // Call the function to mark the user as logged in
-        navigate('/'); // Redirect to the home page
+        navigate('/');
+        // Handle post-login logic (redirect or fetch user data)
       } else {
+        // Sign Up
         setSuccessMessage("Registration successful. Please log in.");
       }
     } catch (error) {
@@ -52,72 +65,131 @@ const UserAuthPage = ({ onLoginSuccess }) => {  // Accept `onLoginSuccess` as a 
   };
 
   return (
-    <section className="flex justify-center items-center h-screen bg-[#1E2235]">
-      <div className="relative w-4/5 max-w-6xl">
-        {/* Text Section */}
-        <div className="flex justify-between bg-[#2B2E43] bg-opacity-85 rounded-md text-white">
-          <div className="w-1/2 p-8">
-            <h2 className="text-2xl mb-4">{isSignUp ? 'Already have an account?' : "Don't have an account?"}</h2>
-            <p className="text-sm mb-6">
-              {isSignUp ? "Log in to continue exploring constitutional amendments and more." : 
-              "Join the platform and start exploring the Kenyan Constitution today."}
-            </p>
-            <button
-              className="border border-purple-600 text-purple-500 rounded-md py-2 px-6 uppercase hover:bg-purple-600 hover:text-white"
-              onClick={toggleForms}
-            >
-              {isSignUp ? "Login" : "Sign up"}
-            </button>
+    <div className="flex justify-center items-center h-screen bg-[#1E2235]">
+      <div className="relative w-4/5 lg:flex lg:justify-between bg-[#2B2E43] bg-opacity-85 rounded-md p-6">
+        <div className="flex w-full text-white p-8 space-y-4 space-x-16 relative">
+          <div className="flex w-full space-x-32">
+            <div className="flex flex-col space-y-4 w-3/8">
+              <h2 className="text-2xl font-light">Don't have an account?</h2>
+              <p className="text-sm">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+              <button
+                onClick={handleSignUp}
+                className="border border-purple-600 text-purple-500 rounded px-6 py-2 text-white uppercase tracking-wide transition-colors duration-200 hover:bg-purple-600 hover:text-white"
+              >
+                Sign up
+              </button>
+            </div>
+
+            <div className="flex flex-col space-y-4 w-3/8 ml-auto">
+              <h2 className="text-2xl font-light">Have an account?</h2>
+              <p className="text-sm">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+              <button
+                onClick={handleLogin}
+                className="border border-purple-600 text-purple-500 rounded px-6 py-2 text-white uppercase tracking-wide transition-colors duration-200 hover:bg-purple-600 hover:text-white"
+              >
+                Login
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Forms Section */}
         <div
-          className={`absolute top-1/2 transform -translate-y-1/2 left-8 w-1/2 bg-[#f2f2f3] rounded-md shadow-xl transition-transform duration-500 ${
-            isSignUp ? '' : 'translate-x-[100%]'
-          }`}
+          className={`absolute top-1/2 left-6 transform -translate-y-1/2 w-1/2  bg-[#f2f2f3] rounded-md shadow-xl p-8 transition-transform duration-500 ${isSignUp ? 'translate-x-0' : 'translate-x-full'}`}
         >
-          <div className="p-8">
-            <h2 className="text-xl font-medium mb-6 uppercase tracking-wider text-purple-500">{isSignUp ? "Sign Up" : "Login"}</h2>
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              {isSignUp && (
-                <input
-                  type="text"
-                  name="fullName"
-                  placeholder="Full Name"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className="w-full border-b border-gray-500 bg-transparent py-2 px-4 text-sm text-black focus:outline-none focus:border-purple-500"
-                />
-              )}
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full border-b border-gray-500 bg-transparent py-2 px-4 text-sm text-black focus:outline-none focus:border-purple-500"
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full border-b border-gray-500 bg-transparent py-2 px-4 text-sm text-black focus:outline-none focus:border-purple-500"
-              />
-              {errorMessage && <p className="text-red-600">{errorMessage}</p>}
-              {successMessage && <p className="text-green-600">{successMessage}</p>}
-              <div className="flex justify-end mt-4">
-                <button type="submit" className="bg-purple-600 text-white py-2 px-8 rounded-md uppercase">
-                  {isSignUp ? "Sign Up" : "Log In"}
-                </button>
-              </div>
-            </form>
-          </div>
+          {!isSignUp ? (
+            <div>
+              <h2 className="text-xl font-medium uppercase text-purple-500 tracking-widest mb-8">Login</h2>
+              <form className="space-y-4 min-h-[220px]" onSubmit={handleSubmit}>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="w-full border-b border-gray-500 bg-transparent px-2 py-2 text-sm text-black placeholder-gray-500 outline-none focus:border-purple-500"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className="w-full border-b border-gray-500 bg-transparent px-2 py-2 text-sm text-black placeholder-gray-500 outline-none focus:border-purple-500"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="flex justify-between items-center mt-8">
+                  <button type="button" className="text-gray-500 underline text-sm hover:text-gray-600">
+                    Forgot password?
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-purple-600 text-white px-6 py-2 rounded uppercase tracking-wide transition-colors duration-200 hover:bg-purple-500"
+                  >
+                    Log In
+                  </button>
+                </div>
+              </form>
+              {errorMessage && <p className="text-red-600 mt-2">{errorMessage}</p>}
+              {successMessage && <p className="text-green-600 mt-2">{successMessage}</p>}
+            </div>
+          ) : (
+            <div>
+              <h2 className="text-xl font-medium uppercase text-purple-500 tracking-widest mb-8">Sign Up</h2>
+              <form className="space-y-4 min-h-[280px]" onSubmit={handleSubmit}>
+                <div>
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="Full Name"
+                    className="w-full border-b border-gray-500 bg-transparent px-2 py-2 text-sm text-black placeholder-gray-500 outline-none focus:border-purple-500"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="w-full border-b border-gray-500 bg-transparent px-2 py-2 text-sm text-black placeholder-gray-500 outline-none focus:border-purple-500"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className="w-full border-b border-gray-500 bg-transparent px-2 py-2 text-sm text-black placeholder-gray-500 outline-none focus:border-purple-500"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="flex justify-end mt-8">
+                  <button
+                    type="submit"
+                    className="bg-purple-600 text-white px-6 py-2 rounded uppercase tracking-wide transition-colors duration-200 hover:bg-purple-500"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </form>
+              {errorMessage && <p className="text-red-600 mt-2">{errorMessage}</p>}
+              {successMessage && <p className="text-green-600 mt-2">{successMessage}</p>}
+            </div>
+          )}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
