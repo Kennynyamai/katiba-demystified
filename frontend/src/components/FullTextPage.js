@@ -53,8 +53,8 @@ const FullTextPage = () => {
         Here's the complete text from the Constitution.
       </p>
 
-      <div className="mt-8 py-8 rounded-lg bg-gray-700 w-full overflow-y-auto" style={{ width: '100%', maxWidth: '600px' }}>
-        <div className="block max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
+      <div className="mt-8 md:py-8 p-4 md-p-0 rounded-lg bg-gray-700 w-full overflow-y-auto" style={{ width: '100%', maxWidth: '600px' }}>
+        <div className="block max-w-lg p-2 md-p-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
           {/* Render the formatted text using dangerouslySetInnerHTML */}
           <p
             className="font-normal text-gray-900 -mt-4"
@@ -64,7 +64,7 @@ const FullTextPage = () => {
       </div>
 
       {/* Display matched terms and their definitions below the full text */}
-      <div className="mt-8 py-4 w-full" style={{ maxWidth: '600px' }}>
+      <div className="mt-8 mb-8 py-4 w-full" style={{ maxWidth: '600px' }}>
         {matchedTerms.length > 0 ? (
           <>
             <h2 className="text-2xl font-bold text-center">Legal Terms in the Text</h2>

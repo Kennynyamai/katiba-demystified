@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 const db = require('../database');
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); 
+
 
 const registerUser = async (req, res) => {
     const client = await db.pool.connect();
@@ -62,7 +65,63 @@ const loginUser = async (req, res) => {
     }
 };
 
+const googleLogin = async (req, res) => {
+    try {
+        const { googleToken } = req.body;  // The token sent from the frontend
+
+        // Verify the Google token
+        const ticket = await client.verifyIdToken({
+            idToken: googleToken,
+            audience: process.env.GOOGLE_CLIENT_ID,  // Ensure this matches your client ID
+        });
+
+        const payload = ticket.getPayload();
+        const email = payload.email;
+        const fullName = payload.name;
+
+        // Check if the user exists in your database
+        const clientDb = await db.pool.connect();
+        const result = await clientDb.query(`SELECT * FROM users WHERE email = $1`, [email]);
+
+        if (result.rows.length === 0) {
+            // If the user doesn't exist, create a new user
+            const newUser = await clientDb.query(
+                `INSERT INTO users (id, full_name, email) VALUES ($1, $2, $3) RETURNING *`,
+                [uuidv4(), fullName, email]
+            );
+
+            const accessToken = jwt.sign({ id: newUser.rows[0].id }, process.env.JWT_SECRET, {
+                expiresIn: 86400, // 24 hours
+            });
+
+            return res.status(200).send({
+                id: newUser.rows[0].id,
+                full_name: fullName,
+                email: email,
+                accessToken: accessToken,
+            });
+        }
+
+        // If the user exists, generate a JWT access token
+        const accessToken = jwt.sign({ id: result.rows[0].id }, process.env.JWT_SECRET, {
+            expiresIn: 86400, // 24 hours
+        });
+
+        res.status(200).send({
+            id: result.rows[0].id,
+            full_name: result.rows[0].full_name,
+            email: result.rows[0].email,
+            accessToken: accessToken,
+        });
+
+    } catch (error) {
+        console.error('Google login error:', error);
+        res.status(500).send({ message: 'Error logging in with Google' });
+    }
+};
+
 module.exports = {
     registerUser,
     loginUser,
+    googleLogin,
 };

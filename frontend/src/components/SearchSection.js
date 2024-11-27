@@ -19,8 +19,8 @@ const SearchSection = ({ onSearch }) => {
         
         <input
           type="text"
-          className="w-80 px-4 py-2 rounded-l-lg text-gray-900"
-          placeholder= "What does the Constitution say about..."
+          className="w-full px-4 py-2 md:w-80 rounded-l-lg text-gray-900 placeholder:text-sm"
+          placeholder= "Type a query"
           value={input}
           onChange={handleInputChange}  // Capture user input
         />

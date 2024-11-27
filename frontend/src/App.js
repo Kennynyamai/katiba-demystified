@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google'; // Import Google OAuth
+
 import MainSection from './components/MainSection';
 import FullTextPage from './components/FullTextPage';
 import SearchSection from './components/SearchSection';
@@ -7,14 +9,15 @@ import FullTextBackSection from './components/FullTextBackSection';
 import SearchByChapterPage from './components/SearchByChapterPage';
 import Navbar from './components/Navbar';
 import UserAuthPage from './components/UserAuthPage';
+import SmallScreenUserAuthPage from './components/SmallScreenUserAuthPage';
 
 const App = () => {
-  const location = useLocation(); // Get the current route
+  const location = useLocation();
   const [userInput, setUserInput] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [googleUser, setGoogleUser] = useState(null); // Store Google user data
 
   useEffect(() => {
-    // Check if the user is authenticated by checking for a token in localStorage
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
@@ -26,7 +29,15 @@ const App = () => {
   };
 
   const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleGoogleLoginSuccess = (response) => {
+    console.log('Google login success:', response);
+    setGoogleUser(response);
     setIsAuthenticated(true); // Mark user as authenticated
+    // Store the response in localStorage or send it to your backend if needed
+    localStorage.setItem('google_token', response?.access_token);
   };
 
   const isSearchByChapterPage = location.pathname === '/searchbychapter';
@@ -35,8 +46,8 @@ const App = () => {
 
   return (
     <div className="flex flex-col h-screen">
-      {/* Navbar only shown when the user is authenticated */}
-      {isAuthenticated && <Navbar />}
+      {/* Always render the Navbar component */}
+      <Navbar />
 
       {/* Main content area */}
       <div className="flex-grow overflow-y-auto">
@@ -56,7 +67,18 @@ const App = () => {
           />
           <Route
             path="/auth"
-            element={<UserAuthPage onLoginSuccess={handleLoginSuccess} />}
+            element={
+              <>
+                {/* Show the regular UserAuthPage on medium and larger screens */}
+                <div className="hidden md:block">
+                  <UserAuthPage onLoginSuccess={handleLoginSuccess} onGoogleLoginSuccess={handleGoogleLoginSuccess} />
+                </div>
+                {/* Show the small-screen UserAuthPage on small screens */}
+                <div className="block md:hidden">
+                  <SmallScreenUserAuthPage onLoginSuccess={handleLoginSuccess} onGoogleLoginSuccess={handleGoogleLoginSuccess} />
+                </div>
+              </>
+            }
           />
         </Routes>
       </div>

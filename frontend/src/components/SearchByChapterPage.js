@@ -9,9 +9,14 @@ const SearchByChapterPage = () => {
   const [selectedChapter, setSelectedChapter] = useState(null); // State to track the selected chapter
   const [simplifiedText, setSimplifiedText] = useState(''); // State to hold the simplified text
   const [sub_title, setSubTitle] = useState('');
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false); // New state to track full-screen mode
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
   };
 
   const chapters = [
@@ -63,9 +68,14 @@ const SearchByChapterPage = () => {
       console.log('Simplified response:', simplifiedResponse);
       setSimplifiedText(simplifiedResponse); // Update the state with the simplified text
       setSubTitle(sub_title); // Update the subtitle
+      setIsSidebarCollapsed(false);
     } catch (error) {
       console.error('Error simplifying text:', error);
     }
+  };
+
+  const closeFullScreen = () => {
+    setIsFullScreen(false); // Close full screen view when user is done
   };
 
   return (
@@ -76,7 +86,8 @@ const SearchByChapterPage = () => {
           <div className="relative">
             <button
               onClick={toggleDropdown}
-              className="w-full text-left bg-purple-600 text-white px-4 py-3 rounded-lg flex justify-between items-center transition duration-200 ease-in-out hover:bg-purple-700"
+              className="w-full text-left bg-purple-600 text-white px-4 py-3 rounded-lg flex justify-between items-center transition duration-200 ease-in-out hover:bg-purple-700 mt-4 md:mt-0"
+
             >
               <span className="font-semibold">Select Chapter</span>
               <svg
@@ -113,15 +124,15 @@ const SearchByChapterPage = () => {
         </div>
       </aside>
 
-      <main className="bg-gray-900 text-white flex-grow p-6 overflow-y-auto">
+      <main className="bg-gray-900 text-white flex-grow p-4 md:p-6 overflow-y-auto">
         <div className="border border-gray-700 p-6 rounded-lg">
           <h2 className="text-2xl font-bold text-white">
-            {selectedChapter && texts.length > 0 ? texts[0].title : 'Amendments'}
+            {selectedChapter && texts.length > 0 ? texts[0].title : 'Selected Chapter'}
           </h2>
         </div>
 
         {selectedChapter && texts.length > 0 && (
-          <div className="mt-6 py-8 px-6 rounded-lg bg-gray-800 w-full max-w-3xl mx-auto overflow-y-auto shadow-lg">
+          <div className="mt-6 py-8 px-4 md:px-6 rounded-lg bg-gray-800 w-full max-w-3xl mx-auto overflow-y-auto shadow-lg">
             {texts.map((item, index) => (
               <div key={index} className="block w-full p-4 bg-gray-200 border border-gray-300 rounded-lg shadow hover:bg-gray-300 mb-4 mx-auto">
                 <div className="flex justify-between">
@@ -138,6 +149,7 @@ const SearchByChapterPage = () => {
                 >
                   Simplify
                 </button>
+                
               </div>
             ))}
           </div>
@@ -146,18 +158,53 @@ const SearchByChapterPage = () => {
 
 
       {/* Simplified Text Sidebar */}
-      <aside className="bg-gray-800 text-white md:w-1/4 w-full p-4 transition-all">
-        <div className="mb-4">
-          <button className="bg-purple-500 w-full py-2 rounded-lg transition duration-200 hover:bg-purple-600">
-            Simplified Text
-          </button>
-        </div>
+      <aside
+        className= "bg-gray-800 text-white md:w-1/4 w-full p-4 flex flex-col sm:relative transform transition-transform duration-300 fixed bottom-0 z-10"
+      >
+  <div className="space-y-4">
+    <div className="relative">
+      <button
+        onClick={toggleSidebar}
+        className="w-full bg-purple-600 text-white px-4 py-3 rounded-lg flex justify-between items-center transition duration-200 ease-in-out hover:bg-purple-700"
+      >
+        {/* Text aligned to the left */}
+        <span className="font-semibold">Simplified Text</span>
+        
+        {/* SVG aligned to the right */}
+        <svg
+          className={`w-4 h-4 transform transition-transform duration-200 sm:hidden ${isSidebarCollapsed ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+    </div>
 
-        <div className="mt-6 p-4 bg-gray-700 rounded-lg shadow-lg">
-          <h3 className="text-lg font-bold">{sub_title}</h3>
-          <p className="text-gray-200 mt-2">{simplifiedText || 'Click "Simplify" to see the simplified text.'}</p>
-        </div>
-      </aside>
+    <div className="mt-6 p-4 bg-gray-700 rounded-lg shadow-lg">
+  {!isSidebarCollapsed && (
+    <>
+      <h3 className="text-lg font-bold">{sub_title}</h3>
+      <p className="text-gray-200">
+        {simplifiedText}
+      </p>
+    </>
+  )}
+</div>
+
+  </div>
+</aside>
+
+
+
+
     </section>
   );
 };

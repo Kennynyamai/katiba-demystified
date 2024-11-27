@@ -12,4 +12,5 @@ module.exports = function(app) {
     // Routes for Users
     app.post('/register', [checkDuplicateEmail], controller.registerUser);
     app.post('/login', controller.loginUser);
+    app.post('/google-login', controller.googleLogin);
 };
