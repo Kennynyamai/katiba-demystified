@@ -5,7 +5,7 @@ const db = require('../database');
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 const { OAuth2Client } = require('google-auth-library');
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); 
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 
 const registerUser = async (req, res) => {
@@ -15,9 +15,10 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const insertResult = await client.query(
-            `INSERT INTO users (id, full_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *`,
-            [uuidv4(), req.body.full_name, req.body.email, hashedPassword]
+            `INSERT INTO users (id, full_name, email, password, auth_provider) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+            [uuidv4(), req.body.full_name, req.body.email, hashedPassword, 'local']
         );
+
 
         await client.query("COMMIT");
 
@@ -85,10 +86,13 @@ const googleLogin = async (req, res) => {
 
         if (result.rows.length === 0) {
             // If the user doesn't exist, create a new user
+            const dummyPassword = 'oauth_dummy_password'; // This should never be used for login
+
             const newUser = await clientDb.query(
-                `INSERT INTO users (id, full_name, email) VALUES ($1, $2, $3) RETURNING *`,
-                [uuidv4(), fullName, email]
+                `INSERT INTO users (id, full_name, email, password, auth_provider) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+                [uuidv4(), fullName, email, dummyPassword, 'google']
             );
+
 
             const accessToken = jwt.sign({ id: newUser.rows[0].id }, process.env.JWT_SECRET, {
                 expiresIn: 86400, // 24 hours
@@ -98,6 +102,7 @@ const googleLogin = async (req, res) => {
                 id: newUser.rows[0].id,
                 full_name: fullName,
                 email: email,
+                auth_provider: result.rows[0].auth_provider,
                 accessToken: accessToken,
             });
         }
@@ -111,6 +116,7 @@ const googleLogin = async (req, res) => {
             id: result.rows[0].id,
             full_name: result.rows[0].full_name,
             email: result.rows[0].email,
+            auth_provider: result.rows[0].auth_provider,
             accessToken: accessToken,
         });
 
